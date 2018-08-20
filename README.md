@@ -11,7 +11,7 @@ If not, refrain from writing production code while reading the search results of
 Of course, a careful programmer would use a properly parametrized query:
 
 ```python
-cursor.execute("SELECT * FROM USER WHERE USER_NAME=?", (user_name,))
+cursor.execute("SELECT * FROM USER WHERE USER_NAME='?'", (user_name,))
 ```
 
 We will not further discuss the specifics of SQL injections here, but the problem with the code above is more general: the programmer was making use of string concatenation to construct an expression in a secondary language SQL involved in the Python project at hand.
@@ -96,7 +96,7 @@ System.out.println(baseUrl("2001:db8:85a3::8a2e:370:7334", 8080));
 // actual: http://2001:db8:85a3::8a2e:370:7334:8080/api
 ```
 
-A minor bug, easily fixed using some extra mess:   
+While the bug is high priority, it is also trivial and easily fixed using some extra mess:   
 
 ```java
 // format a url to our API at host and port
@@ -112,7 +112,7 @@ public String baseUrl(String host, int port) throws URISyntaxException {
 ```
 
 The problem with this bug is that it showed up on a Sunday.
-The OPS guys were moving the application to and IPv6-only production enviroment.
+The OPS guys were moving the application to an IPv6-only production enviroment.
 The programmer had to leave the familiy BBQ to commit a 'trivial' fix to this P1 bug over a broken WiFi network (what was the VPN password, again?).
 
   
